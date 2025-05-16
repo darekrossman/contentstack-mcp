@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://images.contentstack.io/v3/assets/bltc5a09bf374882538/blt8f67099566c9b566/6397cbe80f17b871a8a6898b/contentstack_logo.png" alt="Contentstack Logo" width="400"/>
+  <img src="https://logovectorseek.com/wp-content/uploads/2021/05/contentstack-logo-vector.png" />
 </p>
 
 # Contentstack MCP Server
@@ -72,9 +72,35 @@ For development, you can use:
 npm run dev
 ```
 
-### Integration with Claude
+## Code Quality
 
-#### Claude for Desktop
+This project uses [Biome.js](https://biomejs.dev/) for linting and formatting. It provides a consistent code style and helps catch potential issues early.
+
+### Available Commands
+
+- **Lint Code**: Check your code for errors and style issues
+  ```bash
+  npm run lint
+  ```
+
+- **Lint and Fix**: Automatically fix linting issues when possible
+  ```bash
+  npm run lint:fix
+  ```
+
+- **Format Code**: Format your code without fixing linting issues
+  ```bash
+  npm run format
+  ```
+
+- **Format and Fix**: Apply code formatting and fix formatting issues
+  ```bash
+  npm run format:fix
+  ```
+
+## Integration with Claude
+
+### Claude for Desktop
 
 To use this server with Claude for Desktop:
 
@@ -100,7 +126,7 @@ To use this server with Claude for Desktop:
 
 3. Restart Claude for Desktop
 
-#### Claude Web Interface
+### Claude Web Interface
 
 For Claude web users, this server can be run locally and used with Claude when the appropriate API is available.
 
