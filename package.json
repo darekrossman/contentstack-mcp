@@ -16,7 +16,7 @@
 		"clean": "rm -rf dist",
 		"watch": "tsc --watch",
 		"dev": "nodemon --watch src -e ts --exec 'npm run build'",
-		"test": "echo \"Error: no test specified yet!\" && exit 1",
+		"test": "echo \"No test specified yet, but soon!\" && exit 1",
 		"lint": "biome check --fix --unsafe",
 		"typecheck": "tsc --noEmit",
 		"prepare": "npm run build"
@@ -50,6 +50,10 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
+		"@semantic-release/commit-analyzer": "^13.0.1",
+		"@semantic-release/github": "^11.0.2",
+		"@semantic-release/npm": "^12.0.1",
+		"@semantic-release/release-notes-generator": "^14.0.3",
 		"@types/node": "^20.8.7",
 		"nodemon": "^3.1.10",
 		"ts-node": "^10.9.1",
