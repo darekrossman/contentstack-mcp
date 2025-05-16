@@ -14,11 +14,12 @@ FROM node:lts-alpine
 WORKDIR /app
 
 # Copy built artifacts and dependencies
-COPY --from=builder /app/build ./build
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/bin ./bin
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-# Copy .env.example as reference (optional)
-# USER can mount .env or set env vars at runtime
+ENV CONTENTSTACK_API_KEY=stack_api_key
+ENV CONTENTSTACK_MANAGEMENT_TOKEN=stack_management_token
 
-ENTRYPOINT ["node", "build/index.js"]
+ENTRYPOINT ["node", "bin/mcp-server.js"]

@@ -5,7 +5,7 @@ startCommand:
   commandFunction:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
     |-
-    (config) => ({command: 'node', args: ['build/index.js'], env: {CONTENTSTACK_API_KEY: config.contentstackApiKey, CONTENTSTACK_MANAGEMENT_TOKEN: config.contentstackManagementToken, CONTENTSTACK_BRANCH: config.contentstackBranch || ''}})
+    (config) => ({command: 'node', args: ['bin/mcp-server.js'], env: {CONTENTSTACK_API_KEY: config.contentstackApiKey, CONTENTSTACK_MANAGEMENT_TOKEN: config.contentstackManagementToken, CONTENTSTACK_BRANCH: config.contentstackBranch || ''}})
   configSchema:
     # JSON Schema defining the configuration options for the MCP.
     type: object
