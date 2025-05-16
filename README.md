@@ -13,6 +13,10 @@ This Model Context Protocol (MCP) server integrates with Contentstack's Content 
 
 > **Note:** This is an early version of Contentstack MCP Server. See the [Roadmap](#roadmap) for upcoming improvements and planned features.
 
+<a href="https://glama.ai/mcp/servers/@darekrossman/contentstack-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@darekrossman/contentstack-mcp/badge" alt="contentstack-mcp MCP server" />
+</a>
+
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
@@ -265,4 +269,3 @@ MIT
 ---
 
 **Disclaimer:** This project is not affiliated with, endorsed by, or supported by Contentstack. It is an independent open-source project designed to work with the Contentstack API.
-
