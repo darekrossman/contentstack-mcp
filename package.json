@@ -16,7 +16,7 @@
 		"clean": "rm -rf dist",
 		"watch": "tsc --watch",
 		"dev": "nodemon --watch src -e ts --exec 'npm run build'",
-		"test": "echo \"No test specified yet, but soon!\" && exit 1",
+		"test": "echo \"No test specified yet, but soon!\"",
 		"lint": "biome check --fix --unsafe",
 		"typecheck": "tsc --noEmit",
 		"prepare": "npm run build"
