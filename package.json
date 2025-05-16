@@ -1,6 +1,6 @@
 {
-  "name": "contentstack-mcp-server",
-  "version": "1.0.0",
+  "name": "contentstack-mcp",
+  "version": "0.1.0",
   "description": "MCP server for interacting with Contentstack Content Management API",
   "main": "build/index.js",
   "type": "module",

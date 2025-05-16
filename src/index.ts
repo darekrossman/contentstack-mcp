@@ -39,8 +39,8 @@ const getHeaders = () => {
 
 // Create MCP server
 const server = new McpServer({
-  name: "contentstack-mcp-server",
-  version: "1.0.0"
+  name: "contentstack-mcp",
+  version: "0.1.0"
 });
 
 // Error handler helper
