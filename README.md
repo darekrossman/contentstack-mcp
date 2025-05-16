@@ -14,20 +14,33 @@ This Model Context Protocol (MCP) server integrates with Contentstack's Content 
 ## Features
 
 ### Resources
-Access content directly from your Contentstack CMS:
-- **Content Types**: View all available content types
-- **Content Type by UID**: Retrieve a specific content type structure
-- **Entries**: Get all entries for a specific content type
-- **Entry by UID**: Retrieve a specific entry
-- **Assets**: Browse all assets in the CMS
-- **Global Fields**: Access reusable field structures
+- **`content-types`**: Retrieves a list of all content types in the stack. (URI: `contentstack://content-types`)
+- **`content-type`**: Retrieves a specific content type by its UID. (URI Template: `contentstack://content-type/{uid}`)
+- **`entries`**: Retrieves all entries for a specific content type. (URI Template: `contentstack://entries/{content_type_uid}`)
+- **`entry`**: Retrieves a specific entry by its UID and content type UID. (URI Template: `contentstack://entry/{content_type_uid}/{entry_uid}`)
+- **`assets`**: Retrieves a list of all assets in the stack. (URI: `contentstack://assets`)
 
 ### Tools
-Perform CRUD operations on your Contentstack content:
-- **Content Type Management**: Create, update, and delete content types
-- **Entry Management**: Create, update, delete, publish, and unpublish entries
-- **Global Field Management**: Create and update global fields
-- **Taxonomy Management**: Work with taxonomies for content organization
+- **`create_content_type`**: Creates a new content type with the specified schema, options, field rules, and taxonomies.
+- **`update_content_type`**: Updates an existing content type identified by its UID. Allows modification of title, schema, options, and field rules.
+- **`delete_content_type`**: Deletes a content type identified by its UID.
+- **`create_entry`**: Creates a new entry for a specified content type.
+- **`update_entry`**: Updates an existing entry identified by its UID and content type UID.
+- **`delete_entry`**: Deletes an entry identified by its UID and content type UID.
+- **`get_content_type`**: Retrieves a specific content type by its UID, optionally including the global field schema.
+- **`get_all_content_types`**: Retrieves a list of all content types, with options for pagination and including additional details like global field schema and counts.
+- **`get_entry`**: Retrieves a specific entry by its content type UID and entry UID, with options for locale and including references.
+- **`get_entries`**: Retrieves entries for a specified content type, with extensive options for filtering, sorting, pagination, and including related data.
+- **`publish_entry`**: Publishes an entry to a specified environment and locale.
+- **`unpublish_entry`**: Unpublishes an entry from a specified environment and locale.
+- **`create_global_field`**: Creates a new global field with the specified title, UID, and schema.
+- **`update_global_field`**: Updates an existing global field identified by its UID. Allows modification of title and schema.
+- **`get_all_global_fields`**: Retrieves a list of all global fields, with options for pagination and including branch information.
+
+### Prompts
+- **`create_content_workflow`**: Initiates a guided workflow for creating new content for a specified content type.
+- **`content_analysis`**: Initiates an analysis of content within a specified content type, providing insights and patterns.
+- **`migration_planning`**: Initiates a planning process for migrating content to Contentstack, guiding through key considerations.
 
 ## Setup
 
