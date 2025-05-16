@@ -19,7 +19,9 @@
 		"test": "echo \"No test specified yet, but soon!\"",
 		"lint": "biome check --fix --unsafe",
 		"typecheck": "tsc --noEmit",
-		"prepare": "npm run build"
+		"prepare": "npm run build",
+		"inspect": "node -r dotenv/config ./scripts/inspect.js",
+    "inspect-watch": "node ./scripts/inspect-watch.js"
 	},
 	"keywords": [
 		"mcp",
