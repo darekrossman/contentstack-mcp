@@ -5,6 +5,7 @@
 
 
 # Contentstack MCP Server
+[![smithery badge](https://smithery.ai/badge/@darekrossman/contentstack-mcp)](https://smithery.ai/server/@darekrossman/contentstack-mcp)
 
 This Model Context Protocol (MCP) server integrates with Contentstack's Content Management API, enabling AI assistants like Claude to interact with your Contentstack CMS through a standardized protocol.
 
