@@ -12,7 +12,7 @@
 		"mcp-server-contentstack": "./bin/mcp-server.js"
 	},
 	"scripts": {
-		"build": "node lib/build.js && chmod +x bin/mcp-server.js",
+		"build": "node build.js && chmod +x bin/mcp-server.js",
 		"clean": "rm -rf dist",
 		"watch": "tsc --watch",
 		"dev": "nodemon --watch src -e ts --exec 'npm run build'",

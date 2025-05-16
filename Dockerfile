@@ -4,9 +4,8 @@ FROM node:lts-alpine AS builder
 WORKDIR /app
 
 # Install dependencies and build
-COPY package.json package-lock.json tsconfig.json ./
+COPY . .
 RUN npm ci --ignore-scripts
-COPY src ./src
 RUN npm run build
 
 # Production image
