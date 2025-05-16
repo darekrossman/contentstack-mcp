@@ -59,6 +59,8 @@ const getHeaders = () => {
 const server = new McpServer({
 	name: "contentstack-mcp",
 	version: "0.1.0",
+	description:
+		"Integrates with Contentstack's Content Management API for content type and entry management.",
 });
 
 // Error handler helper
@@ -80,6 +82,7 @@ const handleError = (error: ApiError): string => {
 server.resource(
 	"content-types",
 	"contentstack://content-types",
+	{ description: "Retrieves a list of all content types in the stack." },
 	async (uri) => {
 		try {
 			const response = await axios.get<ContentTypesResponse>(
@@ -118,6 +121,7 @@ server.resource(
 	new ResourceTemplate("contentstack://content-type/{uid}", {
 		list: undefined,
 	}),
+	{ description: "Retrieves a specific content type by its UID." },
 	async (uri, { uid }) => {
 		try {
 			const response = await axios.get<ContentTypeResponse>(
@@ -156,6 +160,7 @@ server.resource(
 	new ResourceTemplate("contentstack://entries/{content_type_uid}", {
 		list: undefined,
 	}),
+	{ description: "Retrieves all entries for a specific content type." },
 	async (uri, { content_type_uid }) => {
 		try {
 			const response = await axios.get<EntriesResponse>(
@@ -194,6 +199,9 @@ server.resource(
 	new ResourceTemplate("contentstack://entry/{content_type_uid}/{entry_uid}", {
 		list: undefined,
 	}),
+	{
+		description: "Retrieves a specific entry by its UID and content type UID.",
+	},
 	async (uri, { content_type_uid, entry_uid }) => {
 		try {
 			const response = await axios.get<EntryResponse>(
@@ -227,33 +235,41 @@ server.resource(
 );
 
 // Assets Resource
-server.resource("assets", "contentstack://assets", async (uri) => {
-	try {
-		const response = await axios.get<AssetsResponse>(`${API_BASE_URL}/assets`, {
-			headers: getHeaders(),
-		});
+server.resource(
+	"assets",
+	"contentstack://assets",
+	{ description: "Retrieves a list of all assets in the stack." },
+	async (uri) => {
+		try {
+			const response = await axios.get<AssetsResponse>(
+				`${API_BASE_URL}/assets`,
+				{
+					headers: getHeaders(),
+				},
+			);
 
-		return {
-			contents: [
-				{
-					uri: uri.href,
-					text: JSON.stringify(response.data.assets, null, 2),
-					mimeType: "application/json",
-				},
-			],
-		};
-	} catch (error) {
-		return {
-			contents: [
-				{
-					uri: uri.href,
-					text: handleError(error as ApiError),
-					mimeType: "text/plain",
-				},
-			],
-		};
-	}
-});
+			return {
+				contents: [
+					{
+						uri: uri.href,
+						text: JSON.stringify(response.data.assets, null, 2),
+						mimeType: "application/json",
+					},
+				],
+			};
+		} catch (error) {
+			return {
+				contents: [
+					{
+						uri: uri.href,
+						text: handleError(error as ApiError),
+						mimeType: "text/plain",
+					},
+				],
+			};
+		}
+	},
+);
 
 // ==========================================
 // TOOLS
@@ -262,6 +278,7 @@ server.resource("assets", "contentstack://assets", async (uri) => {
 // Create Content Type
 server.tool(
 	"create_content_type",
+	"Creates a new content type with the specified schema, options, field rules, and taxonomies.",
 	{
 		title: z.string().describe("Content type title"),
 		uid: z.string().describe("Content type UID (unique identifier)"),
@@ -447,6 +464,7 @@ server.tool(
 // Update Content Type
 server.tool(
 	"update_content_type",
+	"Updates an existing content type identified by its UID. Allows modification of title, schema, options, and field rules.",
 	{
 		uid: z.string().describe("Content type UID to update"),
 		title: z.string().optional().describe("New content type title"),
@@ -619,6 +637,7 @@ server.tool(
 // Delete Content Type
 server.tool(
 	"delete_content_type",
+	"Deletes a content type identified by its UID.",
 	{
 		uid: z.string().describe("Content type UID to delete"),
 	},
@@ -656,6 +675,7 @@ server.tool(
 // Create Entry
 server.tool(
 	"create_entry",
+	"Creates a new entry for a specified content type.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry: z
@@ -700,6 +720,7 @@ server.tool(
 // Update Entry
 server.tool(
 	"update_entry",
+	"Updates an existing entry identified by its UID and content type UID.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry_uid: z.string().describe("Entry UID to update"),
@@ -742,6 +763,7 @@ server.tool(
 // Delete Entry
 server.tool(
 	"delete_entry",
+	"Deletes an entry identified by its UID and content type UID.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry_uid: z.string().describe("Entry UID to delete"),
@@ -780,6 +802,7 @@ server.tool(
 // Get Content Type
 server.tool(
 	"get_content_type",
+	"Retrieves a specific content type by its UID, optionally including the global field schema.",
 	{
 		uid: z.string().describe("Content type UID to retrieve"),
 		include_global_field_schema: z
@@ -830,6 +853,7 @@ server.tool(
 // Get All Content Types
 server.tool(
 	"get_all_content_types",
+	"Retrieves a list of all content types, with options for pagination and including additional details like global field schema and counts.",
 	{
 		include_global_field_schema: z
 			.boolean()
@@ -960,6 +984,7 @@ server.tool(
 // Get Entry
 server.tool(
 	"get_entry",
+	"Retrieves a specific entry by its content type UID and entry UID, with options for locale and including references.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry_uid: z.string().describe("Entry UID to retrieve"),
@@ -1032,6 +1057,7 @@ server.tool(
 // Get Entries
 server.tool(
 	"get_entries",
+	"Retrieves entries for a specified content type, with extensive options for filtering, sorting, pagination, and including related data.",
 	{
 		content_type_uid: z
 			.string()
@@ -1253,6 +1279,7 @@ server.tool(
 // Publish Entry
 server.tool(
 	"publish_entry",
+	"Publishes an entry to a specified environment and locale.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry_uid: z.string().describe("Entry UID to publish"),
@@ -1314,6 +1341,7 @@ server.tool(
 // Unpublish Entry
 server.tool(
 	"unpublish_entry",
+	"Unpublishes an entry from a specified environment and locale.",
 	{
 		content_type_uid: z.string().describe("Content type UID"),
 		entry_uid: z.string().describe("Entry UID to unpublish"),
@@ -1365,6 +1393,7 @@ server.tool(
 // Create Global Field
 server.tool(
 	"create_global_field",
+	"Creates a new global field with the specified title, UID, and schema.",
 	{
 		title: z.string().describe("Global field title"),
 		uid: z.string().describe("Global field UID (unique identifier)"),
@@ -1454,6 +1483,7 @@ server.tool(
 // Update Global Field
 server.tool(
 	"update_global_field",
+	"Updates an existing global field identified by its UID. Allows modification of title and schema.",
 	{
 		uid: z.string().describe("Global field UID to update"),
 		title: z.string().optional().describe("New global field title"),
@@ -1552,6 +1582,7 @@ server.tool(
 // Get All Global Fields
 server.tool(
 	"get_all_global_fields",
+	"Retrieves a list of all global fields, with options for pagination and including branch information.",
 	{
 		include_count: z
 			.boolean()
@@ -1661,6 +1692,7 @@ server.tool(
 // Prompt for content creation workflow
 server.prompt(
 	"create_content_workflow",
+	"Initiates a guided workflow for creating new content for a specified content type.",
 	{
 		content_type_uid: z
 			.string()
@@ -1720,6 +1752,7 @@ Please provide details for the main fields of your content, and I'll help struct
 // Prompt for content analysis
 server.prompt(
 	"content_analysis",
+	"Initiates an analysis of content within a specified content type, providing insights and patterns.",
 	{
 		content_type_uid: z.string().describe("Content type UID to analyze"),
 	},
@@ -1779,14 +1812,18 @@ Please help me understand patterns and insights from this content. What would yo
 );
 
 // Prompt for content migration planning
-server.prompt("migration_planning", {}, () => {
-	return {
-		messages: [
-			{
-				role: "user",
-				content: {
-					type: "text",
-					text: `Let's plan a content migration for your Contentstack CMS. I'll help you think through the steps needed for a successful migration.
+server.prompt(
+	"migration_planning",
+	"Initiates a planning process for migrating content to Contentstack, guiding through key considerations.",
+	{},
+	() => {
+		return {
+			messages: [
+				{
+					role: "user",
+					content: {
+						type: "text",
+						text: `Let's plan a content migration for your Contentstack CMS. I'll help you think through the steps needed for a successful migration.
 
 Please consider these aspects:
 
@@ -1797,11 +1834,12 @@ Please consider these aspects:
 5. What's your timeline and are there any specific requirements?
 
 Let's start planning your migration strategy.`,
+					},
 				},
-			},
-		],
-	};
-});
+			],
+		};
+	},
+);
 
 // ==========================================
 // START SERVER
