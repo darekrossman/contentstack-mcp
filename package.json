@@ -1,31 +1,43 @@
 {
-	"name": "@darekrossman/contentstack-mcp",
-	"version": "0.1.0",
-	"description": "MCP server for interacting with Contentstack Content Management API",
-	"main": "build/index.js",
+	"name": "@drossman/contentstack-mcp",
+	"version": "0.2.0",
+	"description": "MCP server for interacting with the Contentstack Management API",
+	"main": "./dist/bundle.js",
 	"type": "module",
-	"files": ["build", "README.md", "LICENSE"],
-	"scripts": {
-		"build": "tsc",
-		"start": "node build/index.js",
-		"dev": "ts-node --esm src/index.ts",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "biome check src/",
-		"lint:fix": "biome check --apply src/",
-		"format": "biome format src/",
-		"format:fix": "biome format --write src/"
+	"files": [
+		"dist"
+	],
+	"bin": {
+		"contentstack-mcp": "./bin/mcp-server.js",
+		"mcp-server-contentstack": "./bin/mcp-server.js"
 	},
-	"keywords": ["mcp", "contentstack", "cms", "headless", "content-management"],
+	"scripts": {
+		"build": "node lib/build.js && chmod +x bin/mcp-server.js",
+		"clean": "rm -rf dist",
+		"watch": "tsc --watch",
+    "dev": "nodemon --watch src -e ts --exec 'npm run build'",
+		"test": "echo \"Error: no test specified yet!\" && exit 1",
+		"lint": "biome check --fix --unsafe",
+		"typecheck": "tsc --noEmit",
+		"prepare": "npm run build"
+	},
+	"keywords": [
+		"mcp",
+		"contentstack",
+		"cms",
+		"headless",
+		"content-management"
+	],
 	"author": "Darek Rossman",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/YOUR_USERNAME/YOUR_REPONAME.git"
+		"url": "git+https://github.com/darekrossman/contentstack-mcp.git"
 	},
 	"bugs": {
-		"url": "https://github.com/YOUR_USERNAME/YOUR_REPONAME/issues"
+		"url": "https://github.com/darekrossman/contentstack-mcp/issues"
 	},
-	"homepage": "https://github.com/YOUR_USERNAME/YOUR_REPONAME#readme",
+	"homepage": "https://github.com/darekrossman/contentstack-mcp#readme",
 	"publishConfig": {
 		"access": "public"
 	},
@@ -38,7 +50,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
 		"@types/node": "^20.8.7",
+		"nodemon": "^3.1.10",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.2.2"
+		"typescript": "^5.8.3"
 	}
 }
