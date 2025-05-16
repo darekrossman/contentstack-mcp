@@ -1,9 +1,10 @@
 {
-	"name": "contentstack-mcp",
+	"name": "@darekrossman/contentstack-mcp",
 	"version": "0.1.0",
 	"description": "MCP server for interacting with Contentstack Content Management API",
 	"main": "build/index.js",
 	"type": "module",
+	"files": ["build", "README.md", "LICENSE"],
 	"scripts": {
 		"build": "tsc",
 		"start": "node build/index.js",
@@ -15,8 +16,19 @@
 		"format:fix": "biome format --write src/"
 	},
 	"keywords": ["mcp", "contentstack", "cms", "headless", "content-management"],
-	"author": "",
+	"author": "Darek Rossman",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/YOUR_USERNAME/YOUR_REPONAME.git"
+	},
+	"bugs": {
+		"url": "https://github.com/YOUR_USERNAME/YOUR_REPONAME/issues"
+	},
+	"homepage": "https://github.com/YOUR_USERNAME/YOUR_REPONAME#readme",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.7.0",
 		"axios": "^1.6.0",

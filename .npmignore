@@ -1,0 +1,24 @@
+src/
+.env
+.env.*
+
+# Config files
+biome.json
+tsconfig.json
+
+# Assets / Images (if not needed in package)
+assets/
+
+# Git
+.git/
+.gitignore
+
+# Node modules (npm handles this, but good to be explicit)
+node_modules/
+
+# Build artifacts from other processes (if any)
+# e.g. coverage/
+
+# OS generated files
+.DS_Store
+Thumbs.db 
