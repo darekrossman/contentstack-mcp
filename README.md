@@ -2,9 +2,13 @@
   <img src="https://logovectorseek.com/wp-content/uploads/2021/05/contentstack-logo-vector.png" />
 </p>
 
+
+
 # Contentstack MCP Server
 
 This Model Context Protocol (MCP) server integrates with Contentstack's Content Management API, enabling AI assistants like Claude to interact with your Contentstack CMS through a standardized protocol.
+
+> **Note:** This is an early version of Contentstack MCP Server. Features and APIs are subject to change. See the [Roadmap](#roadmap) for upcoming improvements and planned features.
 
 ## Features
 
@@ -199,6 +203,21 @@ This server interacts with the Contentstack Content Management API. For detailed
 - **Resource Not Found**: Verify that the requested content type or entry exists
 - **Permission Errors**: Check that your management token has the required permissions for the operation
 - **Rate Limiting**: Be aware of API rate limits when making multiple requests
+
+## Roadmap
+
+The following checklist outlines planned and desirable features to enhance this MCP server, focusing on core functionalities expected in modern MCP implementations:
+
+- [ ] **Enhanced AI Contextual Understanding**: Improve how the MCP server provides context to the AI, potentially including more metadata or related content snippets to aid in complex queries and multi-turn conversations.
+- [ ] **Advanced Querying & Filtering**: Introduce more sophisticated ways to query entries and assets, such as filtering by multiple criteria, date ranges, or custom field values directly through AI prompts.
+- [ ] **Workflow & Publishing Automation**: Enable AI-driven actions for content workflows, like initiating review processes, scheduling publishing, or managing content stages.
+- [ ] **Asset Management Enhancements**: Beyond browsing, allow for more direct asset manipulation via AI, such as uploading assets, updating metadata, or organizing assets into folders.
+- [ ] **Bulk Operations Support**: Implement capabilities for performing actions on multiple entries or assets at once (e.g., batch publish, batch delete, batch tag).
+- [ ] **Improved Error Handling & AI Feedback**: Refine error messages to be more AI-friendly, providing clearer feedback that helps the AI understand and correct its requests.
+- [ ] **User-Specific Context & Permissions**: Explore ways to tailor responses and available actions based on the AI user's (or the underlying human user's) permissions within Contentstack.
+- [ ] **Extensibility for Custom Tools**: Design a more straightforward way to add custom tools or extend existing ones, allowing developers to tailor the MCP to specific project needs.
+- [ ] **Real-time Event Handling (Optional)**: Investigate potential for handling Contentstack webhooks to enable more reactive AI behaviors (e.g., notifying the AI of content changes).
+- [ ] **Comprehensive Documentation for AI Interaction**: Develop detailed guides on how to best formulate prompts and interact with the MCP for optimal results.
 
 ## License
 
