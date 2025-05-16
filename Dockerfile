@@ -18,7 +18,4 @@ COPY --from=builder /app/bin ./bin
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-ENV CONTENTSTACK_API_KEY=stack_api_key
-ENV CONTENTSTACK_MANAGEMENT_TOKEN=stack_management_token
-
 ENTRYPOINT ["node", "bin/mcp-server.js"]
