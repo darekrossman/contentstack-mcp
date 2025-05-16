@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://images.contentstack.io/v3/assets/bltc5a09bf374882538/blt8f67099566c9b566/6397cbe80f17b871a8a6898b/contentstack_logo.png" alt="Contentstack Logo" width="400"/>
+</p>
+
 # Contentstack MCP Server
 
 This Model Context Protocol (MCP) server integrates with Contentstack's Content Management API, enabling AI assistants like Claude to interact with your Contentstack CMS through a standardized protocol.
