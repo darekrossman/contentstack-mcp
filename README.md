@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://logovectorseek.com/wp-content/uploads/2021/05/contentstack-logo-vector.png" />
+  <img src="assets/cs-logo.png" />
 </p>
 
 
