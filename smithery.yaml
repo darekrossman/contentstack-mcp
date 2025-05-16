@@ -1,0 +1,29 @@
+# Smithery configuration file: https://smithery.ai/docs/build/project-config
+
+startCommand:
+  type: stdio
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({command: 'node', args: ['build/index.js'], env: {CONTENTSTACK_API_KEY: config.contentstackApiKey, CONTENTSTACK_MANAGEMENT_TOKEN: config.contentstackManagementToken, CONTENTSTACK_BRANCH: config.contentstackBranch || ''}})
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - contentstackApiKey
+      - contentstackManagementToken
+    properties:
+      contentstackApiKey:
+        type: string
+        description: Contentstack API Key
+      contentstackManagementToken:
+        type: string
+        description: Contentstack Management Token
+      contentstackBranch:
+        type: string
+        default: ""
+        description: Contentstack branch name to use (optional)
+  exampleConfig:
+    contentstackApiKey: abcd1234efgh5678
+    contentstackManagementToken: mgmtTokenXyz12345
+    contentstackBranch: main
