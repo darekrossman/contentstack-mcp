@@ -7,10 +7,6 @@
 
 This Model Context Protocol (MCP) server integrates with Contentstack's Content Management API, enabling AI assistants like Claude to interact with your Contentstack CMS through a standardized protocol.
 
-<a href="https://glama.ai/mcp/servers/@darekrossman/contentstack-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@darekrossman/contentstack-mcp/badge" />
-</a>
-
 > **Note:** This is an early version of Contentstack MCP Server. See the [Roadmap](#roadmap) for upcoming improvements and planned features.
 
 <a href="https://glama.ai/mcp/servers/@darekrossman/contentstack-mcp">
