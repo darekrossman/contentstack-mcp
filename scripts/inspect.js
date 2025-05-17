@@ -24,7 +24,7 @@ import { spawn } from "child_process";
 const inspect = spawn(args[0], args.slice(1), { stdio: "inherit" });
 
 inspect.on("error", (err) => {
-  console.error("Failed to start inspector:", err);
+  console.error("Failed to start inspector:", typeof err === 'object' ? JSON.stringify(err, null, 2) : err);
   process.exit(1);
 });
 

@@ -351,7 +351,7 @@ server.tool(
         headers: getHeaders(),
       })
 
-      console.log('API response:', response.data)
+      console.log('API response:', JSON.stringify(response.data, null, 2))
 
       return {
         content: [
@@ -1208,7 +1208,7 @@ server.tool(
         headers: getHeaders(),
       })
 
-      console.log('API response:', response.data)
+      console.log('API response:', JSON.stringify(response.data, null, 2))
 
       return {
         content: [
@@ -1608,6 +1608,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error('Fatal error:', error)
+  console.error('Fatal error:', typeof error === 'object' ? JSON.stringify(error, null, 2) : error)
   process.exit(1)
 })

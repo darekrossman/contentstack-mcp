@@ -29,7 +29,7 @@ function startInspector() {
   });
 
   inspector.on('error', (err) => {
-    console.error('Inspector failed to start:', err);
+    console.error('Inspector failed to start:', typeof err === 'object' ? JSON.stringify(err, null, 2) : err);
   });
 
   return inspector;
@@ -72,7 +72,7 @@ nodemon
     cleanup().then(() => process.exit(0));
   })
   .on('error', (err) => {
-    console.error('Nodemon error:', err);
+    console.error('Nodemon error:', typeof err === 'object' ? JSON.stringify(err, null, 2) : err);
   })
   .on('crash', () => {
     console.error('Application crashed');
@@ -94,6 +94,6 @@ process.on('SIGHUP', cleanup);
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
-  console.error('Uncaught exception:', err);
+  console.error('Uncaught exception:', typeof err === 'object' ? JSON.stringify(err, null, 2) : err);
   cleanup().then(() => process.exit(1));
 });
