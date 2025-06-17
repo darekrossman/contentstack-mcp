@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/darekrossman-contentstack-mcp-badge.png)](https://mseep.ai/app/darekrossman-contentstack-mcp)
+
 <p align="center">
   <img src="assets/cs-logo.png" />
 </p>
