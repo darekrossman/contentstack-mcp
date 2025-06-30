@@ -27,7 +27,7 @@ import type {
 dotenv.config()
 
 // API configuration
-const API_BASE_URL = 'https://api.contentstack.io/v3'
+const API_BASE_URL = process.env.CONTENTSTACK_API_BASE_URL || 'https://api.contentstack.io/v3'
 const API_KEY = process.env.CONTENTSTACK_API_KEY || ''
 const MANAGEMENT_TOKEN = process.env.CONTENTSTACK_MANAGEMENT_TOKEN || ''
 const BRANCH = process.env.CONTENTSTACK_BRANCH || ''
