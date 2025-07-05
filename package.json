@@ -1,6 +1,6 @@
 {
 	"name": "@drossman/contentstack-mcp",
-	"version": "0.2.0",
+	"version": "1.0.2",
 	"description": "MCP server for interacting with the Contentstack Management API",
 	"main": "./dist/bundle.js",
 	"type": "module",
@@ -21,7 +21,7 @@
 		"typecheck": "tsc --noEmit",
 		"prepare": "npm run build",
 		"inspect": "node -r dotenv/config ./scripts/inspect.js",
-    "inspect-watch": "node ./scripts/inspect-watch.js"
+		"inspect-watch": "node ./scripts/inspect-watch.js"
 	},
 	"keywords": [
 		"mcp",
@@ -48,6 +48,7 @@
 		"axios": "^1.6.0",
 		"dotenv": "^16.3.1",
 		"esbuild": "^0.25.4",
+		"turbo": "^2.5.3",
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {
